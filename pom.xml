@@ -13,6 +13,8 @@
     <modules>
         <module>manage-backend</module>
         <module>common-center</module>
+        <module>api-service</module>
+        <module>register-center</module>
     </modules>
 
     <parent>
