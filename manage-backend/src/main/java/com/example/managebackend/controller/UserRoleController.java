@@ -5,7 +5,6 @@ import com.cloud.apimodel.param.UserRoleQueryParam;
 import com.cloud.apiservice.service.UserRoleService;
 import com.example.commoncenter.base.BaseResponseUtil;
 import com.github.pagehelper.PageInfo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
