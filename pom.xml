@@ -11,6 +11,8 @@
 
 
     <modules>
+        <module>api-generator</module>
+        <module>api-model</module>
         <module>manage-backend</module>
         <module>common-center</module>
         <module>api-service</module>
