@@ -14,10 +14,10 @@ import javax.annotation.Resource;
 
 @RestController
 @RequestMapping("/user/roleInfo")
-@Api(value = "eureka-provider", description = "学生查询接口")
 public class RoleInfoController {
 
     @Resource
+
     RoleInfoService roleInfoService;
 
     @PostMapping(value = "/save")

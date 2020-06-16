@@ -33,5 +33,5 @@ eureka:
   #配置Swagger相关信息
   instance:
     prefer-ip-address: true
-    instanceId: ${spring.cloud.client.ipAddress}:${server.port}
-    status-page-url: http://${spring.cloud.client.ipAddress}:${server.port}/swagger-ui.html # ${server.port}为该服务的端口号
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    status-page-url: http://${spring.cloud.client.ip-address}:${server.port}/swagger-ui.html # ${server.port}为该服务的端口号

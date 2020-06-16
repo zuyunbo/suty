@@ -22,14 +22,13 @@
         </dependency>
 
         <dependency>
-            <groupId>com.example</groupId>
-            <artifactId>common-center</artifactId>
-            <version>${project.version}</version>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>com.cloud</groupId>
-            <artifactId>register-center</artifactId>
+            <groupId>com.example</groupId>
+            <artifactId>common-center</artifactId>
             <version>${project.version}</version>
         </dependency>
 
@@ -38,7 +37,6 @@
             <artifactId>api-service</artifactId>
             <version>${project.version}</version>
         </dependency>
-
 
     </dependencies>
 
