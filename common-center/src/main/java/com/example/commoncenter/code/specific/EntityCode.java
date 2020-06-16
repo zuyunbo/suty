@@ -20,15 +20,10 @@ public class EntityCode extends GenerateCode {
     @Override
     public void generateAnInstance() {
 
-        Map<String, Object> map = new HashMap<>();
+/*        Map<String, Object> map = new HashMap<>();
         map.put("package", AutoGenConfig.entityPackageOutPath);
         map.put("tableName", AutoGenConfig.tableName);
-        map.put("classname", Utils.initcap(AutoGenConfig.tableName));
-
-
-
-
-
+        map.put("classname", Utils.initcap(AutoGenConfig.tableName));*/
 
         String entityContent = parseEntity();
         String tmpTableName = Utils.replaceUnderlineAndFirstToUpper(AutoGenConfig.tableName.toLowerCase(), "_", "");

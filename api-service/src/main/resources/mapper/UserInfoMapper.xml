@@ -1,16 +1,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.cloud.apiservice.mapper.UserInfoMapper">
-    <cache readOnly="true" eviction="FIFO"/>
+<mapper  namespace="com.cloud.apiservice.mapper.UserInfoMapper">
+<cache readOnly="true" eviction="FIFO"/>
 
 
-    <select id="listQuery" parameterType="com.cloud.apimodel.param.UserInfoQueryParam" resultType="com.cloud.apimodel.entity.UserInfo">
+ <select id="listQuery" parameterType="com.cloud.apimodel.param.UserInfoQueryParam" resultType="com.cloud.apimodel.entity.UserInfo">
         SELECT * FROM user_info
-        <where>
-            <if test="name!=null and name!=''">
-                user_info.name = #{name}
-            </if>
-        </where>
+        <if test="sortNames!=null and sortNames!='' and sortType!=null and sortType!=''">
+            ORDER BY ${sortNames} ${sortType}
+        </if>
     </select>
 
 </mapper>

@@ -56,12 +56,9 @@ public class UserInfoServiceImpl implements UserInfoService {
         return userInfoMapper.selectByPrimaryKey(id);
     }
 
-    // 分页方法
     @Override
     public PageInfo<UserInfo> pageQuery(UserInfoQueryParam queryParam) {
-        // ps pn 都是公共查询方法力的参数   这是分页插件 很好用的插件～
         PageHelper.startPage(queryParam.getPn(), queryParam.getPs());
-        // 自己在mapper里定义的查询集合方法
         List<UserInfo> list = userInfoMapper.listQuery(queryParam);
         PageInfo<UserInfo> page = new PageInfo<>(list);
         return page;
