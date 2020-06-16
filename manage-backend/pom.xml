@@ -34,6 +34,12 @@
 
         <dependency>
             <groupId>com.cloud</groupId>
+            <artifactId>api-swagger</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.cloud</groupId>
             <artifactId>api-service</artifactId>
             <version>${project.version}</version>
         </dependency>

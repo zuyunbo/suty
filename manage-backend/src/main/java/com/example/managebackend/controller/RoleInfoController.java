@@ -7,6 +7,7 @@ import com.cloud.apiservice.service.RoleInfoService;
 import com.example.commoncenter.base.BaseResponseUtil;
 import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -14,12 +15,14 @@ import javax.annotation.Resource;
 
 @RestController
 @RequestMapping("/user/roleInfo")
+@Api(description = "角色")
 public class RoleInfoController {
 
     @Resource
 
     RoleInfoService roleInfoService;
 
+    @ApiOperation(value = "保存")
     @PostMapping(value = "/save")
     public Object save(@RequestBody RoleInfo entity) {
         int result = roleInfoService.save(entity);
