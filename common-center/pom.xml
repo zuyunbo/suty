@@ -45,7 +45,11 @@
         <artifactId>mapper-spring-boot-starter</artifactId>
         <version>2.0.4</version>
     </dependency>
-
+    <!--MySQL数据库驱动-->
+    <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+    </dependency>
 
     <!-- https://mvnrepository.com/artifact/org.jetbrains.kotlin/kotlin-stdlib -->
     <dependency>
