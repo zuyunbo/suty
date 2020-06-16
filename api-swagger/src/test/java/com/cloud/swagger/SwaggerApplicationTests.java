@@ -1,10 +1,10 @@
-package com.cloud.registercenter;
+package com.cloud.swagger;
 
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class RegisterCenterApplicationTests {
+class SwaggerApplicationTests {
 
     @Test
     void contextLoads() {

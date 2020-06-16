@@ -29,6 +29,12 @@
 
         <dependency>
             <groupId>com.cloud</groupId>
+            <artifactId>register-center</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.cloud</groupId>
             <artifactId>api-service</artifactId>
             <version>${project.version}</version>
         </dependency>

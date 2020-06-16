@@ -6,6 +6,7 @@ import com.cloud.apimodel.param.RoleInfoQueryParam;
 import com.cloud.apiservice.service.RoleInfoService;
 import com.example.commoncenter.base.BaseResponseUtil;
 import com.github.pagehelper.PageInfo;
+import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -13,6 +14,7 @@ import javax.annotation.Resource;
 
 @RestController
 @RequestMapping("/user/roleInfo")
+@Api(value = "eureka-provider", description = "学生查询接口")
 public class RoleInfoController {
 
     @Resource

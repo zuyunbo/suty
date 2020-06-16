@@ -15,6 +15,7 @@
         <module>common-center</module>
         <module>api-service</module>
         <module>register-center</module>
+        <module>api-swagger</module>
     </modules>
 
     <parent>
