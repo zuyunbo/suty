@@ -39,8 +39,8 @@ swagger:
   title: API接口文档
   description: Safety Inspection Api Documentation
   version: 1.0.0
-  termsOfServiceUrl: https://github.com/zuyunbo
+  termsOfServiceUrl: www.baidu.com
   contact:
     name: 2u
-    url: https://github.com/zuyunbo
-    email: sy829322@163.com
+    url: www.baidu.com
+    email: www.baidu.com
