@@ -18,6 +18,7 @@
         <module>api-service</module>
         <module>register-center</module>
         <module>api-swagger</module>
+        <module>user-auth</module>
     </modules>
 
     <parent>
