@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/user/roleInfo")
-@Api(description = "角色")
-public class RoleInfoController {
+@Api(description = "角色222")
+public class DemoController {
 
     @GetMapping(value = "/list")
     public Object list() {

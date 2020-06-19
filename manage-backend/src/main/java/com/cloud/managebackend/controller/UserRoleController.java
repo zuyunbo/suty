@@ -1,31 +1,25 @@
-package com.example.managebackend.controller;
+package com.cloud.managebackend.controller;
 
-
-import com.cloud.apimodel.entity.RoleInfo;
-import com.cloud.apimodel.param.RoleInfoQueryParam;
-import com.cloud.apiservice.service.RoleInfoService;
+import com.cloud.apimodel.entity.UserRole;
+import com.cloud.apimodel.param.UserRoleQueryParam;
+import com.cloud.apiservice.service.UserRoleService;
 import com.example.commoncenter.base.BaseResponseUtil;
 import com.github.pagehelper.PageInfo;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
 
 @RestController
-@RequestMapping("/user/roleInfo")
-@Api(description = "角色")
-public class RoleInfoController {
+@RequestMapping("/user/userRole")
+public class UserRoleController {
 
     @Resource
+    UserRoleService userRoleService;
 
-    RoleInfoService roleInfoService;
-
-    @ApiOperation(value = "保存")
     @PostMapping(value = "/save")
-    public Object save(@RequestBody RoleInfo entity) {
-        int result = roleInfoService.save(entity);
+    public Object save(@RequestBody UserRole entity) {
+        int result = userRoleService.save(entity);
 
         if (result > 0) {
             return BaseResponseUtil.constructResponse(BaseResponseUtil.SUCCESS, "保存成功", entity.getId());
@@ -36,13 +30,13 @@ public class RoleInfoController {
 
     @GetMapping(value = "/{id}/detail")
     public Object detail(@PathVariable long id) {
-        RoleInfo entity = roleInfoService.getById(id);
+        UserRole entity = userRoleService.getById(id);
         return BaseResponseUtil.constructResponse(BaseResponseUtil.SUCCESS, "查询成功", entity);
     }
 
     @PutMapping(value = "/update")
-    public Object update(@RequestBody RoleInfo entity) {
-        int result = roleInfoService.update(entity);
+    public Object update(@RequestBody UserRole entity) {
+        int result = userRoleService.update(entity);
 
         if (result > 0) {
             return BaseResponseUtil.constructResponse(BaseResponseUtil.SUCCESS, "修改成功", entity.getId());
@@ -53,7 +47,7 @@ public class RoleInfoController {
 
     @DeleteMapping(value = "/{id}")
     public Object remove(@PathVariable long id) {
-        int result = roleInfoService.remove(id);
+        int result = userRoleService.remove(id);
 
         if (result > 0) {
             return BaseResponseUtil.constructResponse(BaseResponseUtil.SUCCESS, "删除成功");
@@ -63,8 +57,8 @@ public class RoleInfoController {
     }
 
     @GetMapping(value = "/list")
-    public Object list(RoleInfoQueryParam queryParam) {
-        PageInfo pageInfo = roleInfoService.pageQuery(queryParam);
+    public Object list(UserRoleQueryParam queryParam) {
+        PageInfo pageInfo = userRoleService.pageQuery(queryParam);
 
         return BaseResponseUtil.constructResponse(BaseResponseUtil.SUCCESS, "查询成功", pageInfo);
     }

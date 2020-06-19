@@ -1,10 +1,9 @@
-package com.example.managebackend.configuration;
+package com.cloud.managebackend.configuration;
 
-import com.example.managebackend.filters.LoginInterceptor;
+import com.cloud.managebackend.filters.LoginInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.HandlerInterceptor;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;

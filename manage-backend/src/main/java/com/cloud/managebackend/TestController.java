@@ -1,4 +1,4 @@
-package com.example.managebackend;
+package com.cloud.managebackend;
 
 
 import org.springframework.web.bind.annotation.RequestMapping;
