@@ -31,13 +31,12 @@ public class LoginController {
             //生成token
             String token = JWTUtil.generateToken(username);
             //转换MD5
-            String md5info = username + password;
-            String md5 = DigestUtils.md5DigestAsHex(md5info.getBytes());
+            String md5 = DigestUtils.md5DigestAsHex(username.getBytes());
             //把MD5放入session
             request.getSession().setAttribute("token", md5);
             //数据放入redis
             redisTemplate.opsForValue().set(md5, token, JWTUtil.TOKEN_EXPIRE_TIME, TimeUnit.MILLISECONDS);
-            return token;
+            return md5;
         } else {
             return "error";
         }
@@ -47,11 +46,15 @@ public class LoginController {
      * 刷新token
      */
     @GetMapping("/refreshToken")
-    public String refreshToken(@RequestParam String userName) {
+    public String refreshToken(@RequestParam String userName, HttpServletRequest request) {
         //生成新的token
         String newToken = JWTUtil.generateToken(userName);
-        redisTemplate.opsForValue().set(userName, newToken, JWTUtil.TOKEN_EXPIRE_TIME);
-        return newToken;
+        //转换MD5
+        String md5 = DigestUtils.md5DigestAsHex(userName.getBytes());
+        redisTemplate.opsForValue().set(md5, newToken, JWTUtil.TOKEN_EXPIRE_TIME);
+        //把MD5放入session
+        request.getSession().setAttribute("token", md5);
+        return md5;
     }
 
     @GetMapping("/")

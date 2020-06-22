@@ -11,14 +11,6 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Created with logindemo.
- * Author: dreamer-1
- * Email: zhong--lei@outllok.com
- * Date: 2018/5/13
- * Time: 下午2:58
- * Description:
- */
 @Component
 public class LoginInterceptor implements HandlerInterceptor {
 
@@ -36,7 +28,7 @@ public class LoginInterceptor implements HandlerInterceptor {
      */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        // 检查每个到来的请求对应的Header中是否有登录标识
+        // 检查每个到来的请求对应的中是否有登录标识
         String token = (String) request.getSession().getAttribute("token");
 
         if (null == token) {

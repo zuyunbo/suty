@@ -1,0 +1,15 @@
+server:
+  port: 9099
+spring:
+  application:
+    name: global-exception
+
+#配置eureka获取服务地址
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:6868/eureka
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+
