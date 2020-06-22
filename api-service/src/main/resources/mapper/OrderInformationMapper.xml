@@ -1,0 +1,31 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cloud.apiservice.mapper.OrderInformationMapper">
+    <cache readOnly="true" eviction="FIFO"/>
+
+
+    <select id="listQuery" parameterType="com.cloud.apimodel.param.OrderInformationQueryParam"
+            resultType="com.cloud.apimodel.entity.OrderInformation">
+        SELECT
+            oi.*, mi. NAME,
+            mi.phone,
+            mi.id_card
+        FROM
+            order_information oi
+        LEFT JOIN member_info mi ON oi.mid = mi.id
+    </select>
+
+    <select id="selectByPrimaryKey" parameterType="com.cloud.apimodel.param.OrderInformationQueryParam"
+            resultType="com.cloud.apimodel.entity.OrderInformation">
+        SELECT
+            oi.*, mi. NAME,
+            mi.phone,
+            mi.id_card
+        FROM
+            order_information oi
+        LEFT JOIN member_info mi ON oi.mid = mi.id
+        where oi.id = #{id}
+    </select>
+
+
+</mapper>
