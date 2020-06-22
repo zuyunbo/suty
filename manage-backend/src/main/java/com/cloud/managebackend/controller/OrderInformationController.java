@@ -7,9 +7,9 @@ import com.example.commoncenter.base.BaseResponseUtil;
 import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import javax.validation.Valid;
 
 /**
@@ -20,7 +20,7 @@ import javax.validation.Valid;
 @Api(tags = "订单信息表 ")
 public class OrderInformationController {
 
-    @Autowired
+    @Resource
     OrderInformationService orderInformationService;
 
     @ApiOperation(value = "保存")

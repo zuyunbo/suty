@@ -7,6 +7,7 @@ import lombok.Data;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Transient;
 import java.util.Date;
 
 /**
@@ -38,14 +39,14 @@ public class OrderInformation extends BaseEntity {
     private Date creatTime;
 
     @ApiModelProperty("测试用户名称")
-    @Column(name ="name")
+    @Transient
     private String name;
 
     @ApiModelProperty("测试用户电话")
-    @Column(name ="phone")
+    @Transient
     private Integer phone;
 
     @ApiModelProperty("测试身份证号")
-    @Column(name ="id_card")
+    @Transient
     private Integer idCard;
 }

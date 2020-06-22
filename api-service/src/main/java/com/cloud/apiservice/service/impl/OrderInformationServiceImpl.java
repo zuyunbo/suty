@@ -28,7 +28,7 @@ public class OrderInformationServiceImpl implements OrderInformationService {
 
     @Override
     public int update(OrderInformation entity) {
-        if (entity.getId() == null || entity.getId() != 0L) {
+        if (entity.getId() == null || entity.getId() == 0L) {
             throw new IllegalParameterException("更新内容id不能为空");
         }
         return orderInformationMapper.updateByPrimaryKeySelective(entity);
@@ -47,7 +47,6 @@ public class OrderInformationServiceImpl implements OrderInformationService {
         if (id == null || id == 0L) {
             throw new IllegalParameterException("详情id不能为空");
         }
-
         return orderInformationMapper.selectByPrimaryKey(id);
     }
 
