@@ -25,7 +25,8 @@ public class UserInfo extends BaseEntity {
      * 测试用户名
 
      */
-     @ApiModelProperty("测试用户名 ")
+     @ApiModelProperty("测试用户名
+")
      private String userName;
     /**
      * 测试用户密码

@@ -27,12 +27,24 @@ public interface AutoGenConfig {
 
     String entityBasePath = "entity";
 
+    String entityWritePath="/ztemplate/Entity.java.vm";
+
+
+    /**
+     * dao config
+     */
+    String daoPackageOutPath = "com.cloud.apiservice";
+
+    String daoBasePath = "mapper";
+
+    String daoWritePath="/ztemplate/Dao.java.vm";
+
+
     /**
      * xml config
      */
     String xmlPackageOutPath = "com.cloud.apiservice";
 
-     String daoBasePath = "mapper";
 
 
 

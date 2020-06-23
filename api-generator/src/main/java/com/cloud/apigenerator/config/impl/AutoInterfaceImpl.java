@@ -5,6 +5,7 @@ import com.cloud.apigenerator.config.AutoInterface;
 import com.cloud.apigenerator.entity.ColumnEntity;
 import com.cloud.apigenerator.entity.TableEntity;
 import com.cloud.apigenerator.service.GenerateCode;
+import com.cloud.apigenerator.service.impl.DaoCode;
 import com.cloud.apigenerator.service.impl.EntityCode;
 import com.cloud.apigenerator.util.Utils;
 import lombok.extern.slf4j.Slf4j;
@@ -32,7 +33,9 @@ public abstract class AutoInterfaceImpl implements AutoInterface {
 
     @Override
     public GenerateCode getGenerateCodes() {
-        return new EntityCode(tableEntity);
+        GenerateCode entityCode = new EntityCode(tableEntity);
+        entityCode.setNextGenerateCode(new DaoCode(tableEntity));
+        return entityCode;
     }
 
     /**

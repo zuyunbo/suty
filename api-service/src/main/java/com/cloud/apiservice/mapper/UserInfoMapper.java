@@ -1,17 +1,14 @@
 package com.cloud.apiservice.mapper;
-
-
-import com.cloud.apimodel.entity.UserInfo;
-import com.cloud.apimodel.param.UserInfoQueryParam;
 import org.springframework.stereotype.Repository;
 import tk.mybatis.mapper.common.Mapper;
+import com.cloud.apimodel.entity.UserInfo;
 
-import java.util.List;
-
+/**
+ *
+ * @author 2u c1111
+ * @since 1.0 2020-06-23
+ */
 @Repository
-public interface UserInfoMapper extends  Mapper<UserInfo>  {
-
- List<UserInfo> listQuery(UserInfoQueryParam queryParam);
-
+public interface UserInfoMapper extends Mapper<UserInfo> {
+	
 }
-

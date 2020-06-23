@@ -1,0 +1,16 @@
+package com.cloud.apiservice.mapper;
+
+
+import tk.mybatis.mapper.common.Mapper;
+import ${package}.${moduleName}.${className};
+import org.springframework.stereotype.Repository;
+
+/**
+ *
+ * @author ${author} ${email}
+ * @since ${version} ${date}
+ */
+@Repository
+public interface ${className}Mapper extends Mapper<${className}> {
+	
+}
