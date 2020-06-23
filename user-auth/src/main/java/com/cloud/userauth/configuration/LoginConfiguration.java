@@ -8,14 +8,7 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-/**
- * Created with logindemo.
- * Author: dreamer-1
- * Email: zhong--lei@outllok.com
- * Date: 2018/5/13
- * Time: 下午2:58
- * Description:
- */
+
 @Configuration
 public class LoginConfiguration implements WebMvcConfigurer {
 

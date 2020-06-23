@@ -4,10 +4,12 @@ package com.cloud.managebackend.controller;
 import com.cloud.apimodel.entity.RoleInfo;
 import com.cloud.apimodel.param.RoleInfoQueryParam;
 import com.cloud.apiservice.service.RoleInfoService;
+import com.cloud.globalexception.config.NotResponseBody;
 import com.example.commoncenter.base.BaseResponseUtil;
 import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import lombok.NoArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -64,6 +66,7 @@ public class RoleInfoController {
     }
 
     @GetMapping(value = "/list")
+    @NotResponseBody
     public Object list(RoleInfoQueryParam queryParam) {
         PageInfo pageInfo = roleInfoService.pageQuery(queryParam);
 
