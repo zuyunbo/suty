@@ -1,6 +1,7 @@
 package com.cloud.apimodel.entity;
 
 import com.example.commoncenter.base.BaseEntity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Builder;
 import lombok.Data;
@@ -38,14 +39,17 @@ public class OrderInformation extends BaseEntity {
     @Column(name ="creat_time")
     private Date creatTime;
 
+    @JsonIgnore
     @ApiModelProperty("测试用户名称")
     @Transient
     private String name;
 
+    @JsonIgnore
     @ApiModelProperty("测试用户电话")
     @Transient
     private Integer phone;
 
+    @JsonIgnore
     @ApiModelProperty("测试身份证号")
     @Transient
     private Integer idCard;
