@@ -1,5 +1,6 @@
 package com.cloud.apiservice.service.impl;
 
+import com.cloud.apimodel.entity.UserInfo;
 import com.cloud.apimodel.param.UserInfoQueryParam;
 import com.cloud.apiservice.mapper.UserInfoMapper;
 import com.cloud.apiservice.service.UserInfoService;
