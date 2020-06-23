@@ -1,7 +1,6 @@
 package com.cloud.managebackend.controller;
 
 
-import com.cloud.apimodel.entity.UserInfo;
 import com.cloud.apimodel.param.UserInfoQueryParam;
 import com.cloud.apiservice.service.UserInfoService;
 import com.example.commoncenter.base.BaseResponseUtil;
