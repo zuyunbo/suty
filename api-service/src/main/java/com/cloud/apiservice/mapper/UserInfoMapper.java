@@ -10,5 +10,6 @@ import com.cloud.apimodel.entity.UserInfo;
  */
 @Repository
 public interface UserInfoMapper extends Mapper<UserInfo> {
-	
+
+
 }

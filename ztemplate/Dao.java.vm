@@ -4,6 +4,9 @@ package com.cloud.apiservice.mapper;
 import tk.mybatis.mapper.common.Mapper;
 import ${package}.${moduleName}.${className};
 import org.springframework.stereotype.Repository;
+import java.util.List;
+import com.cloud.apimodel.param.${className}Param;
+
 
 /**
  *
@@ -12,5 +15,8 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface ${className}Mapper extends Mapper<${className}> {
-	
+
+
+    List<${className}> listQuery(${className}Param queryParam);
+
 }

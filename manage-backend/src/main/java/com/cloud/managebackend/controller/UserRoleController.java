@@ -28,7 +28,7 @@ public class UserRoleController {
         }
     }
 
-    @GetMapping(value = "/{id}/detail")
+    @GetMapping(value = "{id}")
     public Object detail(@PathVariable long id) {
         UserRole entity = userRoleService.getById(id);
         return BaseResponseUtil.constructResponse(BaseResponseUtil.SUCCESS, "查询成功", entity);

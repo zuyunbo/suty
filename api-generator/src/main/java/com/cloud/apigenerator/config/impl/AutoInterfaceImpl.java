@@ -5,8 +5,7 @@ import com.cloud.apigenerator.config.AutoInterface;
 import com.cloud.apigenerator.entity.ColumnEntity;
 import com.cloud.apigenerator.entity.TableEntity;
 import com.cloud.apigenerator.service.GenerateCode;
-import com.cloud.apigenerator.service.impl.DaoCode;
-import com.cloud.apigenerator.service.impl.EntityCode;
+import com.cloud.apigenerator.service.impl.*;
 import com.cloud.apigenerator.util.Utils;
 import lombok.extern.slf4j.Slf4j;
 
@@ -34,7 +33,18 @@ public abstract class AutoInterfaceImpl implements AutoInterface {
     @Override
     public GenerateCode getGenerateCodes() {
         GenerateCode entityCode = new EntityCode(tableEntity);
-        entityCode.setNextGenerateCode(new DaoCode(tableEntity));
+        ServiceCode serviceCode = new ServiceCode(tableEntity);
+        DaoCode daoCode = new DaoCode(tableEntity);
+        ParamCode paramCode = new ParamCode(tableEntity);
+        ServiceImplCode serviceImplCode = new ServiceImplCode(tableEntity);
+        XmlCode xmlCode = new XmlCode(tableEntity);
+        ControllerCode controllerCode = new ControllerCode(tableEntity);
+        daoCode.setNextGenerateCode(serviceCode);
+        serviceCode.setNextGenerateCode(paramCode);
+        paramCode.setNextGenerateCode(serviceImplCode);
+        serviceImplCode.setNextGenerateCode(xmlCode);
+        xmlCode.setNextGenerateCode(controllerCode);
+        entityCode.setNextGenerateCode(daoCode);
         return entityCode;
     }
 

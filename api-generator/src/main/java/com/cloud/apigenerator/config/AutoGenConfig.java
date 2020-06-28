@@ -8,11 +8,14 @@ public interface AutoGenConfig {
     /**
      * 表名
      */
-    String tableName = "user_info";
+    String tableName = "test_ceshi";
     /**
      * 公共配置
      */
     String srcBasePath = "java";
+
+    String resBasePath = "resources";
+
 
     String projectPath = File.separator + "src" + File.separator + "main";
 
@@ -27,6 +30,10 @@ public interface AutoGenConfig {
 
     String entityBasePath = "entity";
 
+    String paramBasePath = "param";
+
+    String ParamWritePath="/ztemplate/Param.java.vm";
+
     String entityWritePath="/ztemplate/Entity.java.vm";
 
 
@@ -39,13 +46,33 @@ public interface AutoGenConfig {
 
     String daoWritePath="/ztemplate/Dao.java.vm";
 
+    String daoXmlWritePath="/ztemplate/Dao.xml.vm";
+
+
+
+    /**
+     * service config
+     */
+    String servicePackageOutPath = "com.cloud.apiservice";
+
+    String serviceBasePath = "service";
+
+    String serviceWritePath="/ztemplate/Service.java.vm";
+
+    String serviceImplWritePath="/ztemplate/ServiceImpl.java.vm";
+
 
     /**
      * xml config
      */
     String xmlPackageOutPath = "com.cloud.apiservice";
 
+    /**
+     * controller config
+     */
+    String controllerPackageOutPath = "com.cloud.managebackend";
 
+    String controllerWritePath = "/ztemplate/Controller.java.vm";
 
 
 }

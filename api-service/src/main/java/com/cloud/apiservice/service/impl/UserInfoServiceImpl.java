@@ -59,14 +59,14 @@ public class UserInfoServiceImpl implements UserInfoService {
     @Override
     public PageInfo<UserInfo> pageQuery(UserInfoQueryParam queryParam) {
         PageHelper.startPage(queryParam.getPn(), queryParam.getPs());
-        List<UserInfo> list = userInfoMapper.listQuery(queryParam);
+        List<UserInfo> list = userInfoMapper.selectAll();
         PageInfo<UserInfo> page = new PageInfo<>(list);
         return page;
     }
 
     @Override
     public List<UserInfo> listQuery(UserInfoQueryParam queryParam) {
-        return userInfoMapper.listQuery(queryParam);
+        return userInfoMapper.selectAll();
     }
 }
 

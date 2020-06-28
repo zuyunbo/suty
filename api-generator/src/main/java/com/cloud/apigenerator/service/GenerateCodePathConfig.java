@@ -38,6 +38,19 @@ public class GenerateCodePathConfig {
                 + AutoGenConfig.daoPackageOutPath.replace(".", File.separator) + File.separator;
     }
 
+    public static String getControllerPath(){
+        File directory = new File("");
+        return directory.getAbsolutePath() + File.separator + "manage-backend" + AutoGenConfig.projectPath + File.separator +
+                AutoGenConfig.srcBasePath + File.separator
+                + AutoGenConfig.controllerPackageOutPath.replace(".", File.separator) + File.separator;
+    }
+
+    public static String getXmlPath(){
+        File directory = new File("");
+        return directory.getAbsolutePath() + File.separator + "api-service" + AutoGenConfig.projectPath + File.separator +
+                AutoGenConfig.resBasePath + File.separator;
+    }
+
 
     public static Map<String, Object> getCodeMap(TableEntity autoGenEntity,String packages,String moduleName){
         //封装模板数据
@@ -45,6 +58,7 @@ public class GenerateCodePathConfig {
         map.put("tableName", autoGenEntity.getTableName());
         map.put("comments", autoGenEntity.getComments());
         map.put("className", autoGenEntity.getClassName());
+        map.put("classNames", StringUtils.uncapitalize(autoGenEntity.getClassName()));
         map.put("columns", autoGenEntity.getColumns());
         map.put("version", AutoGenConfig.version);
         map.put("package", packages);
@@ -74,6 +88,11 @@ public class GenerateCodePathConfig {
         try {
             String entityPath = basePath + implPath + File.separator
                     + Utils.initcap(name) + ".java";
+            if(name.contains("xml")){
+                entityPath =basePath + implPath + File.separator
+                        + Utils.initcap(name) ;
+            }
+
             Utils.writeFile(entityPath, sw.toString());
         } catch (Exception e) {
             log.error("============>     {}" ,e.getMessage());
