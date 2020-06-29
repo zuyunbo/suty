@@ -20,6 +20,7 @@
         <module>api-swagger</module>
         <module>user-auth</module>
         <module>global-exception</module>
+        <module>manage-web</module>
     </modules>
 
     <parent>
