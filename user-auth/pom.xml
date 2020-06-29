@@ -28,6 +28,12 @@
             <artifactId>common-center</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.cloud</groupId>
+            <artifactId>api-swagger</artifactId>
+            <version>1.0</version>
+        </dependency>
+
     </dependencies>
 
     <build>

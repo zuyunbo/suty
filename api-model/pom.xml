@@ -31,6 +31,11 @@
             <artifactId>global-exception</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.cloud</groupId>
+            <artifactId>api-swagger</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 
     <build>

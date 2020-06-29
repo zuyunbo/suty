@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping("/user/roleInfo")
+@RequestMapping("/test")
 @Api(description = "角色222")
 public class DemoController {
 

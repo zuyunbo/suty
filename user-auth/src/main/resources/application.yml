@@ -33,7 +33,6 @@ eureka:
     prefer-ip-address: true
     instance-id: ${spring.cloud.client.ip-address}:${server.port}
     status-page-url: http://${spring.cloud.client.ip-address}:${server.port}/swagger-ui.html # ${server.port}为该服务的端口号
-
 swagger:
   title: API接口文档
   description: Safety Inspection Api Documentation

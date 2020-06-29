@@ -1,12 +1,13 @@
 package com.cloud.userauth.controller;
 
 import com.cloud.userauth.utils.JWTUtil;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.util.DigestUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
@@ -14,7 +15,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.concurrent.TimeUnit;
 
 @RestController
-public class LoginController {
+@Api(description = "用户1")
+public class TestController {
 
     @Autowired
     private StringRedisTemplate redisTemplate;
@@ -25,7 +27,8 @@ public class LoginController {
      * @param username 用户名
      * @param password 密码
      */
-    @GetMapping("/login")
+    @PostMapping("/login")
+    @ApiOperation(value = "登陆")
     public String login(@RequestParam String username, @RequestParam String password, HttpServletRequest request) {
         if ("admin".equals(username) && "admin".equals(password)) {
             //生成token
@@ -57,8 +60,12 @@ public class LoginController {
         return md5;
     }
 
-    @GetMapping("/")
-    public String index() {
-        return "auth-service: " + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-    }
+//    @RequestMapping("/")
+//    public ModelAndView index() {
+//        ModelAndView modelAndView = new ModelAndView();
+//        modelAndView.setViewName("index");
+//        return modelAndView;
+//    }
+
+
 }  

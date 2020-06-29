@@ -1,6 +1,16 @@
 server:
   port: 8881
 spring:
+  # Spring MVC
+  mvc:
+    view:
+      prefix: /
+      suffix: .html
+  # Thymeleaf
+  thymeleaf:
+    mode: HTML
+    encoding: UTF-8
+    cache: false
   application:
     name: manage-backend
   datasource:

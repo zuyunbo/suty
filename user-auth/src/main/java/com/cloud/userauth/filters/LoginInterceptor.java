@@ -28,28 +28,22 @@ public class LoginInterceptor implements HandlerInterceptor {
      */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        // 检查每个到来的请求对应的中是否有登录标识
+        // 检查每个到来的请求对应的Header中是否有登录标识
         String token = (String) request.getSession().getAttribute("token");
-
+//        String token = "21232f297a57a5a743894a0e4a801fc3";
         if (null == token) {
-            // 未登录，重定向到登录页
-            response.sendRedirect("/");
             return false;
         }
 
         String redisToken = redisTemplate.opsForValue().get(token);
 
         if (StringUtil.isEmpty(redisToken)) {
-            // 未登录，重定向到登录页
-            response.sendRedirect("/");
             return false;
         }
 
         //验证token
         boolean verify = JWTUtil.verify(redisToken);
         if (!verify) {
-            // 未登录，重定向到登录页
-            response.sendRedirect("/");
             return false;
         }
 
