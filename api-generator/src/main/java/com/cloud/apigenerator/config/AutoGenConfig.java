@@ -2,13 +2,16 @@ package com.cloud.apigenerator.config;
 
 import java.io.File;
 
+/**
+ * @author 2u
+ */
 public interface AutoGenConfig {
 
 
     /**
      * 表名
      */
-    String tableName = "test_ceshi";
+    String tableName = "sys_permission";
     /**
      * 公共配置
      */

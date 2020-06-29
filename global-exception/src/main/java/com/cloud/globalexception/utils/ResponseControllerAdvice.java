@@ -15,7 +15,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
  * 拦截Controller方法默认返回参数，统一处理返回值/响应体
  */
 //@ControllerAdvice
-@RestControllerAdvice(basePackages = {"com.cloud"})
+@RestControllerAdvice(basePackages = {"com"})
 public class ResponseControllerAdvice implements ResponseBodyAdvice<Object> {
 
     @Override

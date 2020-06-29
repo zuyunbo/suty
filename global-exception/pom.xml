@@ -17,6 +17,13 @@
     </properties>
 
     <dependencies>
+
+        <dependency>
+            <groupId>com.example</groupId>
+            <artifactId>common-center</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
         <!-- spring cloud -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>

@@ -16,6 +16,7 @@ public class ResultVO<T> {
      * 响应的具体数据
      */
     private T data;
+
     public ResultVO(T data) {
         this(ResultCode.SUCCESS, data);
     }
