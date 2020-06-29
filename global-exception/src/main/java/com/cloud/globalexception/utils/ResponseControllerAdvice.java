@@ -1,6 +1,7 @@
 package com.cloud.globalexception.utils;
 
 import com.cloud.globalexception.config.NotResponseBody;
+import com.cloud.globalexception.pojo.ResultCode;
 import com.cloud.globalexception.pojo.ResultVO;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
@@ -20,10 +21,10 @@ public class ResponseControllerAdvice implements ResponseBodyAdvice<Object> {
 
     @Override
     public Object beforeBodyWrite(Object o, MethodParameter methodParameter, MediaType mediaType, Class aClass, ServerHttpRequest serverHttpRequest, ServerHttpResponse serverHttpResponse) {
-        /*System.out.println("TestResponseBodyAdvice==>beforeBodyWrite:" + o.toString() + ","
+        System.out.println("TestResponseBodyAdvice==>beforeBodyWrite:" + o.toString() + ","
                 + methodParameter);
-        return o;*/
-        return null;
+        return new ResultVO<>(ResultCode.SUCCESS.getCode(), "成功", o);
+//        return null;
     }
 
     //判定是 true / false 判定beforeBodyWrite 运行与否
@@ -31,6 +32,7 @@ public class ResponseControllerAdvice implements ResponseBodyAdvice<Object> {
     public boolean supports(MethodParameter returnType, Class aClass) {
         // 如果接口返回的类型本身就是ResultVO那就没有必要进行额外的操作，返回false
         // 如果方法上加了我们的自定义注解也没有必要进行额外的操作
-        return !(returnType.getParameterType().equals(ResultVO.class) || returnType.hasMethodAnnotation(NotResponseBody.class));
+//        return !(returnType.getParameterType().equals(ResultVO.class) || returnType.hasMethodAnnotation(NotResponseBody.class));
+        return true;
     }
 }
