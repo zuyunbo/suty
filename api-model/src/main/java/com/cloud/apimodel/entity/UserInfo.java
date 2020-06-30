@@ -1,5 +1,6 @@
 package com.cloud.apimodel.entity;
 
+import com.cloud.globalexception.utils.BeanFilter;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiModelProperty;
 import com.example.commoncenter.base.BaseEntity;

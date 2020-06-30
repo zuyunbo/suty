@@ -4,6 +4,8 @@ package com.cloud.managebackend.controller;
 import com.cloud.apimodel.entity.UserInfo;
 import com.cloud.apimodel.param.UserInfoQueryParam;
 import com.cloud.apiservice.service.UserInfoService;
+import com.cloud.globalexception.utils.BeanFilter;
+import com.cloud.globalexception.utils.JsonResultFilter;
 import com.example.commoncenter.base.BaseResponseUtil;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,13 +32,13 @@ public class UserInfoController {
         }
     }
 
-    @GetMapping(value = "/{id}/detail")  //restful 风格的 如果不懂可以先去了解一下
+    @GetMapping(value = "/{id}/detail")
     public Object detail(@PathVariable long id) {
         UserInfo entity = userInfoService.getById(id);
         return BaseResponseUtil.constructResponse(BaseResponseUtil.SUCCESS, "查询成功", entity);
     }
 
-    @PutMapping(value = "/update")    //restful 风格的 如果不懂可以先去了解一下
+    @PutMapping(value = "/update")
     public Object update(@RequestBody UserInfo entity) {
         int result = userInfoService.update(entity);
 
@@ -47,7 +49,7 @@ public class UserInfoController {
         }
     }
 
-    @DeleteMapping(value = "/{id}")   //restful 风格的 如果不懂可以先去了解一下
+    @DeleteMapping(value = "/{id}")
     public Object remove(@PathVariable long id) {
         int result = userInfoService.remove(id);
 
@@ -58,11 +60,10 @@ public class UserInfoController {
         }
     }
 
-    @GetMapping(value = "/list")    //restful 风格的 如果不懂可以先去了解一下
+    @GetMapping(value = "/list")
+    @JsonResultFilter(value = @BeanFilter(type = UserInfo.class , excludes = "userName"))
     public Object list(UserInfoQueryParam queryParam) {
-        PageInfo pageInfo = userInfoService.pageQuery(queryParam);
-
-        return BaseResponseUtil.constructResponse(BaseResponseUtil.SUCCESS, "查询成功", pageInfo);
+        return userInfoService.listQuery(queryParam);
     }
 }
 

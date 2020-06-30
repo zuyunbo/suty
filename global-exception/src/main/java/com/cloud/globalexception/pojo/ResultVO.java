@@ -1,9 +1,10 @@
 package com.cloud.globalexception.pojo;
 
+import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
 import lombok.Getter;
 
 @Getter
-public class ResultVO<T> {
+public class ResultVO<T> extends SimpleBeanPropertyFilter {
     /**
      * 状态码，比如1000代表响应成功
      */
@@ -31,5 +32,8 @@ public class ResultVO<T> {
         this.code = code;
         this.msg = msg;
         this.data = data;
+    }
+
+    public ResultVO() {
     }
 }
