@@ -8,11 +8,11 @@ import lombok.Data;
 /**
  * ${comments}
  *
- * @author 2u c1111
- * @since 1.0 2020-06-29
+ * @author admin c1111
+ * @since 1.0 2020-07-02
  */
 @Data
-public class SysPermissionParam extends BaseQueryParam {
+public class AccountParam extends BaseQueryParam {
 
 
 }

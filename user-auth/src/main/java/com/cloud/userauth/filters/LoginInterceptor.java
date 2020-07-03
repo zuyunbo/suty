@@ -28,11 +28,13 @@ public class LoginInterceptor implements HandlerInterceptor {
      */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+
+
         // 检查每个到来的请求对应的Header中是否有登录标识
         String token = (String) request.getSession().getAttribute("token");
 //        String token = "21232f297a57a5a743894a0e4a801fc3";
         if (null == token) {
-            return false;
+            return true;
         }
 
         String redisToken = redisTemplate.opsForValue().get(token);

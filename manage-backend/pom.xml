@@ -45,6 +45,13 @@
         </dependency>
 
         <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+            <version>1.2.12</version>
+        </dependency>
+
+
+        <dependency>
             <groupId>com.cloud</groupId>
             <artifactId>global-exception</artifactId>
             <version>${project.version}</version>
