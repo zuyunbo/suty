@@ -71,8 +71,16 @@ public class AccountServiceImpl implements AccountService {
 
     }
 
+
+
+
     @Override
     public List<Account> listQuery(AccountParam queryParam) {
         return accountMapper.selectAll();
+    }
+
+    @Override
+    public void getExcted() {
+        throw new IllegalParameterException("详情id不能为空");
     }
 }

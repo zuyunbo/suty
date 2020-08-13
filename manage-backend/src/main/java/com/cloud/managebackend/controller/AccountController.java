@@ -5,6 +5,8 @@ import com.cloud.apimodel.param.AccountParam;
 import com.cloud.apiservice.service.AccountService;
 import com.example.commoncenter.base.BaseResponseUtil;
 import com.github.pagehelper.PageInfo;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -16,6 +18,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
 
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -30,6 +34,9 @@ import springfox.documentation.annotations.ApiIgnore;
 public class AccountController {
     @Autowired
     private AccountService accountService;
+
+    Log log = LogFactory.getLog(this.getClass());
+
 
     @GetMapping("page")
     @ApiOperation("分页")
@@ -89,6 +96,34 @@ public class AccountController {
         Account entity = accountService.getById(id);
         return BaseResponseUtil.constructResponse(BaseResponseUtil.SUCCESS, "查询成功", entity);
     }
+
+    /**
+     * 合营商绑定
+     * @param
+     * @return
+     */
+    @PostMapping("/copBind")
+    @ResponseBody
+    public Map<String, Object> copBind() {
+        accountService.getExcted();
+        return new HashMap<>();
+    }
+
+
+
+    /**
+     * 合营商绑定
+     * @param
+     * @return
+     */
+    @RequestMapping(value = {"/copBind1"},method = RequestMethod.GET)
+    @ResponseBody
+    public Map<String, Object> copBind1() {
+        Map<String, Object> result = new HashMap<>();
+        result.put("1",1);
+        return result;
+    }
+
 
 
 }

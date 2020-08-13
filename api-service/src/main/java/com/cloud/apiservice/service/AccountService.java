@@ -12,4 +12,6 @@ import com.cloud.apimodel.entity.Account;
  */
 public interface AccountService extends BaseServiceInterface<Account, AccountParam,Long> {
 
+    void getExcted();
+
 }
