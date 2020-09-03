@@ -23,10 +23,12 @@ import java.util.concurrent.ConcurrentMap;
 /**
  * 拦截Controller方法默认返回参数，统一处理返回值/响应体
  *
- * @author fanxu
+ * @author
  */
 
+/*
 @RestControllerAdvice(basePackages = {"com"})
+*/
 public class ResponseControllerAdvice implements ResponseBodyAdvice<Object> {
 
     private static final Log LOGGER = LogFactory.getLog(ResponseControllerAdvice.class);

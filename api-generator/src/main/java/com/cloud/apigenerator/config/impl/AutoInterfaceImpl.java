@@ -20,7 +20,7 @@ import java.util.List;
 @Slf4j
 public abstract class AutoInterfaceImpl implements AutoInterface {
 
-    private static final String URL = "jdbc:mysql://47.111.237.66:3306/paas";
+    private static final String URL = "jdbc:mysql://47.96.101.188:3306/suty";
     private static final String NAME = "root";
     private static final String PASS = "123456";
     private static final String DRIVER = "com.mysql.jdbc.Driver";
