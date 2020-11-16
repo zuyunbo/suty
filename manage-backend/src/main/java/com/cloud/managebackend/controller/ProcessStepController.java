@@ -1,42 +1,28 @@
 package com.cloud.managebackend.controller;
 
-import com.cloud.apimodel.entity.Account;
-import com.cloud.apimodel.param.AccountParam;
-import com.cloud.apiservice.service.AccountService;
 import com.example.commoncenter.base.BaseResponseUtil;
 import com.github.pagehelper.PageInfo;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-import springfox.documentation.annotations.ApiIgnore;
-
-import java.util.HashMap;
-import java.util.Map;
 
 
 /**
  * ${comments}
  *
- * @author admin c1111
- * @since 1.0 2020-07-02
+ * @author 2u c1111
+ * @since 1.0 2020-10-26
  */
 @RestController
-@RequestMapping("/api/account")
-@Api(tags="Account")
-public class AccountController {
+@RequestMapping("/api/processStep")
+@Api(tags="ProcessStep")
+public class ProcessStepController {
     @Autowired
-    private AccountService accountService;
-
-    Log log = LogFactory.getLog(this.getClass());
-
+    private ProcessStepService processStepService;
 
     @GetMapping("page")
     @ApiOperation("分页")
@@ -46,8 +32,8 @@ public class AccountController {
         @ApiImplicitParam( value = "排序字段", paramType = "query", dataType="String") ,
         @ApiImplicitParam(value = "排序方式，可选值(asc、desc)", paramType = "query", dataType="String")
     })
-    public Object page(AccountParam queryParam){
-        PageInfo pageInfo = accountService.pageQuery(queryParam);
+    public Object page(ProcessStepParam queryParam){
+        PageInfo pageInfo = processStepService.pageQuery(queryParam);
 
         return BaseResponseUtil.constructResponse(BaseResponseUtil.SUCCESS, "查询成功", pageInfo);
     }
@@ -55,7 +41,7 @@ public class AccountController {
     @DeleteMapping(value = "/{id}")
     @ApiOperation("删除")
     public Object remove(@PathVariable long id) {
-        int result = accountService.remove(id);
+        int result = processStepService.remove(id);
 
         if (result > 0) {
             return BaseResponseUtil.constructResponse(BaseResponseUtil.SUCCESS, "删除成功");
@@ -67,8 +53,8 @@ public class AccountController {
 
     @PostMapping(value = "/save")
     @ApiOperation("保存")
-    public Object save(@RequestBody Account entity) {
-        int result = accountService.save(entity);
+    public Object save(@RequestBody ProcessStep entity) {
+        int result = processStepService.save(entity);
 
         if (result > 0) {
             return BaseResponseUtil.constructResponse(BaseResponseUtil.SUCCESS, "保存成功", entity.getId());
@@ -79,8 +65,8 @@ public class AccountController {
 
     @PutMapping(value = "/update")
     @ApiOperation("修改")
-    public Object update(@RequestBody Account entity) {
-        int result = accountService.update(entity);
+    public Object update(@RequestBody ProcessStep entity) {
+        int result = processStepService.update(entity);
 
         if (result > 0) {
             return BaseResponseUtil.constructResponse(BaseResponseUtil.SUCCESS, "修改成功", entity.getId());
@@ -93,37 +79,9 @@ public class AccountController {
     @GetMapping(value = "/{id}/detail")
     @ApiOperation("详情")
     public Object detail(@PathVariable long id) {
-        Account entity = accountService.getById(id);
+        ProcessStep entity = processStepService.getById(id);
         return BaseResponseUtil.constructResponse(BaseResponseUtil.SUCCESS, "查询成功", entity);
     }
-
-    /**
-     * 合营商绑定
-     * @param
-     * @return
-     */
-    @PostMapping("/copBind")
-    @ResponseBody
-    public Map<String, Object> copBind() {
-        accountService.getExcted();
-        return new HashMap<>();
-    }
-
-
-
-    /**
-     * 合营商绑定
-     * @param
-     * @return
-     */
-    @RequestMapping(value = {"/copBind1"},method = RequestMethod.GET)
-    @ResponseBody
-    public Map<String, Object> copBind1() {
-        Map<String, Object> result = new HashMap<>();
-        result.put("1",1);
-        return result;
-    }
-
 
 
 }

@@ -28,7 +28,7 @@ public abstract class AutoInterfaceImpl implements AutoInterface {
 
     private TableEntity tableEntity;
 
-    private static final String SQL = "select  column_name, column_comment, data_type from information_schema.columns where table_schema ='paas'  and table_name = '%s'";
+    private static final String SQL = "select  column_name, column_comment, data_type from information_schema.columns where table_schema ='suty'  and table_name = '%s'";
 
     @Override
     public GenerateCode getGenerateCodes() {
@@ -52,14 +52,14 @@ public abstract class AutoInterfaceImpl implements AutoInterface {
      * 连接数据库
      */
     @Override
-    public void connectionJDBC() {
+    public void connectionJDBC(String table) {
         try {
             Class.forName(DRIVER);
             con = DriverManager.getConnection(URL, NAME, PASS);
             if (con == null) {
                 log.error("{} =========> 创建数据库失败", AutoInterfaceImpl.class.getName());
             }
-            this.executeQuery();
+            this.executeQuery(table);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -70,10 +70,10 @@ public abstract class AutoInterfaceImpl implements AutoInterface {
      *
      * @return
      */
-    public void executeQuery() {
+    public void executeQuery(String table) {
         List<ColumnEntity> entityList = new ArrayList<>();
         try {
-            String sql = String.format(SQL, AutoGenConfig.tableName);
+            String sql = String.format(SQL, table);
             Statement statement = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             ResultSet resultSet = statement.executeQuery(sql);
             resultSet.last();
@@ -91,8 +91,8 @@ public abstract class AutoInterfaceImpl implements AutoInterface {
         } catch (SQLException e) {
             log.error("=============> {} ", e.getMessage());
         }
-        tableEntity = TableEntity.builder().className(Utils.initcap(Utils.replaceUnderlineAndFirstToUpper(AutoGenConfig.tableName.toLowerCase(), "_", "")))
-                .tableName(AutoGenConfig.tableName).columns(entityList).build();
+        tableEntity = TableEntity.builder().className(Utils.initcap(Utils.replaceUnderlineAndFirstToUpper(table, "_", "")))
+                .tableName(table).columns(entityList).build();
     }
 
 

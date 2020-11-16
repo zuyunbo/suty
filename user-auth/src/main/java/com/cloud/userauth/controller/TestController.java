@@ -1,6 +1,8 @@
 package com.cloud.userauth.controller;
 
+import com.cloud.userauth.model.UserView;
 import com.cloud.userauth.utils.JWTUtil;
+import com.example.commoncenter.base.BaseResponseUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +14,10 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Optional;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
 @RestController
 @Api(description = "用户1")
@@ -24,17 +29,21 @@ public class TestController {
     /**
      * 登录认证
      *
-     * @param username 用户名
-     * @param password 密码
+     * @param userView 用户信息
      */
     @PostMapping("/login")
     @ApiOperation(value = "登陆")
-    public String login(@RequestParam String username, @RequestParam String password, HttpServletRequest request) {
-        if ("admin".equals(username) && "admin".equals(password)) {
+    public String login(@RequestBody UserView userView, HttpServletRequest request) {
+
+        String userName = userView.getUsername();
+        String password = userView.getUsername();
+
+
+        if ("admin".equals(userName) && "admin".equals(password)) {
             //生成token
-            String token = JWTUtil.generateToken(username);
+            String token = JWTUtil.generateToken(userName);
             //转换MD5
-            String md5 = DigestUtils.md5DigestAsHex(username.getBytes());
+            String md5 = DigestUtils.md5DigestAsHex(userName.getBytes());
             //把MD5放入session
             request.getSession().setAttribute("token", md5);
             //数据放入redis
@@ -60,12 +69,21 @@ public class TestController {
         return md5;
     }
 
-//    @RequestMapping("/")
-//    public ModelAndView index() {
-//        ModelAndView modelAndView = new ModelAndView();
-//        modelAndView.setViewName("index");
-//        return modelAndView;
-//    }
 
+    private <T> BaseResponseUtil<T> valid(Function<Object, T> selectFunction, Predicate<T> predicate, String message, Object... arg) {
+        for (Object obj : arg) {
+            if (obj instanceof String) {
+                Optional<T> opt = Optional.ofNullable(selectFunction.apply(obj));
+                if(!opt.isPresent()){
+                   return  new BaseResponseUtil<T>().constructResponseValid(BaseResponseUtil.FAILED, message, obj);
+                }
+                if(predicate.test(opt.get())){
+                    return new BaseResponseUtil<T>().constructResponseValid(BaseResponseUtil.FAILED,message,obj);
+                }
+            }
+
+        }
+        return new BaseResponseUtil<T>();
+    }
 
 }  

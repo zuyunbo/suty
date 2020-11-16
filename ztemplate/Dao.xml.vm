@@ -4,7 +4,7 @@
 <mapper namespace="com.cloud.apiservice.mapper.${className}Mapper">
 
     <select id="listQuery" parameterType="com.cloud.apimodel.param.${className}Param" resultType="com.cloud.apimodel.entity.${className}">
-        SELECT * FROM role_info
+        SELECT * FROM ${tableName}
     </select>
 
 

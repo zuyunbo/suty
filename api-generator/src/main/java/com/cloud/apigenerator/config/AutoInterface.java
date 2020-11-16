@@ -9,7 +9,7 @@ public interface AutoInterface {
     /**
      *  连接池
      */
-    void connectionJDBC();
+    void connectionJDBC(String table);
 
 
     /**

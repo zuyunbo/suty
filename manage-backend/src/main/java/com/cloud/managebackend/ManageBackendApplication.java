@@ -9,10 +9,8 @@ import tk.mybatis.spring.annotation.MapperScan;
 
 @SpringBootApplication
 @MapperScan(basePackages = {"com.cloud.apiservice.mapper"})
-//@ComponentScans(value = {@ComponentScan("com.cloud.userauth.configuration"),
-//        @ComponentScan("com.cloud.userauth.filters"), @ComponentScan("com.cloud.apiservice"), @ComponentScan("com.cloud.swagger")})
 @ComponentScan("com")
-@EnableEurekaClient //使用该注解将注册服务到eureka
+@EnableEurekaClient
 public class ManageBackendApplication {
 
     public static void main(String[] args) {

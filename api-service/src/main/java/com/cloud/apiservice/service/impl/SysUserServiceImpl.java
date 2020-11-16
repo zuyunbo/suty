@@ -1,10 +1,10 @@
 package com.cloud.apiservice.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import com.cloud.apimodel.param.PersonsParam;
-import com.cloud.apimodel.entity.Persons;
-import com.cloud.apiservice.mapper.PersonsMapper;
-import com.cloud.apiservice.service.PersonsService;
+import com.cloud.apimodel.param.SysUserParam;
+import com.cloud.apimodel.entity.SysUser;
+import com.cloud.apiservice.mapper.SysUserMapper;
+import com.cloud.apiservice.service.SysUserService;
 import com.example.commoncenter.exception.IllegalParameterException;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -19,28 +19,28 @@ import java.util.Map;
  * ${comments}
  *
  * @author 2u c1111
- * @since 1.0 2020-09-02
+ * @since 1.0 2020-11-16
  */
 @Service
-public class PersonsServiceImpl implements PersonsService {
+public class SysUserServiceImpl implements SysUserService {
 
 
     @Autowired
-    PersonsMapper personsMapper;
+    SysUserMapper sysUserMapper;
 
     @Override
-    public int save(Persons entity) {
-        return personsMapper.insert(entity);
+    public int save(SysUser entity) {
+        return sysUserMapper.insert(entity);
     }
 
     @Override
-    public int update(Persons entity) {
+    public int update(SysUser entity) {
         if (entity.getId() == null || entity.getId() == 0L) {
             // 自己定义的异常方法
             throw new IllegalParameterException("更新内容id不能为空");
         }
 
-        return personsMapper.updateByPrimaryKeySelective(entity);
+        return sysUserMapper.updateByPrimaryKeySelective(entity);
     }
 
     @Override
@@ -49,27 +49,27 @@ public class PersonsServiceImpl implements PersonsService {
             // 自己定义的异常方法
             throw new IllegalParameterException("删除操作id不能为空");
         }
-        return personsMapper.deleteByPrimaryKey(id);
+        return sysUserMapper.deleteByPrimaryKey(id);
     }
 
     @Override
-    public Persons getById(Long id) {
+    public SysUser getById(Long id) {
         if (id == null || id == 0L) {
             // 自己定义的异常方法
             throw new IllegalParameterException("详情id不能为空");
         }
 
-        return personsMapper.selectByPrimaryKey(id);
+        return sysUserMapper.selectByPrimaryKey(id);
     }
 
     @Override
-    public PageInfo<Persons> pageQuery(PersonsParam queryParam) {
+    public PageInfo<SysUser> pageQuery(SysUserParam queryParam) {
         return PageHelper.startPage(queryParam.getPn(), queryParam.getPs())
-                .doSelectPageInfo(() -> personsMapper.listQuery(queryParam));
+                .doSelectPageInfo(() -> sysUserMapper.listQuery(queryParam));
     }
 
     @Override
-    public List<Persons> listQuery(PersonsParam queryParam) {
-        return personsMapper.selectAll();
+    public List<SysUser> listQuery(SysUserParam queryParam) {
+        return sysUserMapper.selectAll();
     }
 }

@@ -26,7 +26,7 @@ public class SysGeneratorController {
                 return super.getGenerateCodes();
             }
         };
-        autoInterface.connectionJDBC();
+        autoInterface.connectionJDBC(tables);
         GenerateCode generateCodes = autoInterface.getGenerateCodes();
         generateCodes.isToExecute();
     }
