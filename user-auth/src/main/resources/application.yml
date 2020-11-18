@@ -42,3 +42,9 @@ swagger:
     name: 2u
     url: www.baidu.com
     email: www.baidu.com
+
+logging:
+  level:
+    com.cloud.apiservice.mapper : debug
+
+

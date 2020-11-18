@@ -12,4 +12,7 @@ import com.cloud.apimodel.entity.SysUser;
  */
 public interface SysUserService extends BaseServiceInterface<SysUser, SysUserParam,Long> {
 
+    SysUser selectByUserName(String userName);
+
+
 }

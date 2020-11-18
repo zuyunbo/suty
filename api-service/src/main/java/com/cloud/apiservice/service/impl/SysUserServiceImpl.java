@@ -72,4 +72,11 @@ public class SysUserServiceImpl implements SysUserService {
     public List<SysUser> listQuery(SysUserParam queryParam) {
         return sysUserMapper.selectAll();
     }
+
+
+    @Override
+    public SysUser selectByUserName(String userName){
+      return   sysUserMapper.selectByUserName(userName);
+    }
+
 }

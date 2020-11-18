@@ -56,11 +56,7 @@ public class SysUser extends BaseEntity {
      */
      @ApiModelProperty("删除状态(0-正常,1-已删除)")
      private Byte delFlag;
-    /**
-     * 负责部门
-     */
-     @ApiModelProperty("负责部门")
-     private $column.attrType departIds;
+
     /**
      * 电子邮件
      */

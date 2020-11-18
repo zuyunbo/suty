@@ -19,4 +19,10 @@ public interface SysUserMapper extends Mapper<SysUser> {
 
     List<SysUser> listQuery(SysUserParam queryParam);
 
+    SysUser selectByUserName(String userName);
+
+    SysUser selectByPassWord(String passWord);
+
+
+
 }

@@ -23,6 +23,12 @@
             <artifactId>java-jwt</artifactId>
             <version>3.7.0</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.cloud</groupId>
+            <artifactId>api-service</artifactId>
+            <version>${project.version}</version>
+        </dependency>
         <dependency>
             <groupId>com.example</groupId>
             <artifactId>common-center</artifactId>

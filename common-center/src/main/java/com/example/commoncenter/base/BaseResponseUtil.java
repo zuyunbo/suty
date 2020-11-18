@@ -6,6 +6,7 @@ import java.util.Map;
 /**
  *  返回基类
  */
+
 public class BaseResponseUtil<T> {
 
     private T result;

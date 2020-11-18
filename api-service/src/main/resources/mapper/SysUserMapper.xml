@@ -8,4 +8,12 @@
     </select>
 
 
+    <select id="selectByUserName" parameterType="String" resultType="com.cloud.apimodel.entity.SysUser">
+        SELECT * FROM sys_user where  username = #{userName}
+    </select>
+
+    <select id="selectByPassWord" parameterType="String" resultType="com.cloud.apimodel.entity.SysUser">
+        SELECT * FROM sys_user where  password = #{passWord}
+    </select>
+
 </mapper>
