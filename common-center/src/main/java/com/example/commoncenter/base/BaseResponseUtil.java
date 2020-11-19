@@ -1,13 +1,17 @@
 package com.example.commoncenter.base;
 
+import lombok.Data;
+
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  *  返回基类
+ * @author zuyunbo
  */
 
-public class BaseResponseUtil<T> {
+@Data
+public class BaseResponseUtil<T>  extends Object{
 
     private T result;
 

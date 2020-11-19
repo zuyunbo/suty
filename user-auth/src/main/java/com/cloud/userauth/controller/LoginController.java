@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Optional;
-import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
@@ -39,15 +38,16 @@ public class LoginController {
      */
     @PostMapping("/login")
     @ApiOperation(value = "登陆")
-    public Object login(@RequestBody UserView userView, HttpServletRequest request) {
+    public BaseResponseUtil<SysUser> login(@RequestBody UserView userView, HttpServletRequest request) {
 
         String userName = userView.getUsername();
         String password = userView.getPassword();
 
+        Predicate<SysUser> predicate = sys ->"1".equals(sys.getPassword());
+
         BaseResponseUtil<SysUser> valid = this
-                .valid(sysUserService::selectByUserName,
-                        (SysUser sys) -> "1".equals(sys.getPassword()),
-                        "1111", userName,password );
+                .valid(sysUserService::selectByUserName, predicate,
+                        "账号错误", userName);
 
 
         return valid;
@@ -92,11 +92,10 @@ public class LoginController {
                 if(!opt.isPresent()){
                    return  new BaseResponseUtil<T>().constructResponseValid(BaseResponseUtil.FAILED, message, obj);
                 }
-                if(predicate.test(opt.get())){
+                if(!predicate.test(opt.get())){
                     System.out.println("明显对不上");
                 }
             }
-
         }
         return new BaseResponseUtil<T>().constructResponseValid(BaseResponseUtil.SUCCESS, message, null);
     }
