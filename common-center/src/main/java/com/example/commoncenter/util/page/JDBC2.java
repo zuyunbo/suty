@@ -33,11 +33,11 @@ public class JDBC2 {
 //"&rewriteBatchedStatements=true",一次插入多条数据，只插入一次
                 conn = DriverManager.getConnection("jdbc:mysql://47.96.101.188:3306/suty?" + "","root","123456");
 //4.定义sql语句
-                String sql = "insert into test_page values(default,?,?)";
+                String sql = "insert into test_page(username,password) values(?,?)";
 //5.获取执行sql的对象PreparedStatement
                 pstmt = conn.prepareStatement(sql);
 //6.不断产生sql
-                for (int i = 0; i < 1000000; i++) {
+                for (int i = 0; i < 100000; i++) {
                     pstmt.setString(1,(int)(Math.random()*1000000)+"");
                     pstmt.setString(2,(int)(Math.random()*1000000)+"");
                     pstmt.addBatch();
