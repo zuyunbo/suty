@@ -1,6 +1,5 @@
 package com.cloud.userauth.configuration;
 
-import com.cloud.userauth.filters.LoginInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -15,7 +14,8 @@ public class LoginConfiguration implements WebMvcConfigurer {
     @Bean
     public HandlerInterceptor getMyInterceptor() {
         System.out.println("启动拦截器");
-        return new LoginInterceptor();
+        return new HandlerInterceptor() {
+        };
     }
 
     // 这个方法用来注册拦截器，我们自己写好的拦截器需要通过这里添加注册才能生效
