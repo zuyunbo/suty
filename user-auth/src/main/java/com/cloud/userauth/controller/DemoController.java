@@ -4,6 +4,7 @@ package com.cloud.userauth.controller;
 import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 
 
 @RestController
@@ -15,5 +16,13 @@ public class DemoController {
     public Object list() {
         return "查询成功";
     }
+
+
+
+    @RequestMapping(value = "/current", method = RequestMethod.GET)
+    public Principal getUser(Principal principal) {
+        return principal;
+    }
+
 }
 

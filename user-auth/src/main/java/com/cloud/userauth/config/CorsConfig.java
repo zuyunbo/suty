@@ -1,4 +1,4 @@
-package com.cloud.userauth.utils;
+package com.cloud.userauth.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
