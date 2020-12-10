@@ -1,4 +1,4 @@
-package com.cloud.userauth.config;
+package com.cloud.gatewayzuul.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

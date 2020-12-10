@@ -18,6 +18,7 @@ import java.util.function.Predicate;
 
 @RestController
 @Api(description = "用户1")
+@RequestMapping("/user")
 public class LoginController {
 
     @Autowired
@@ -29,20 +30,6 @@ public class LoginController {
     @Autowired
     SysUserService sysUserService;
 
-    /**
-     * 登录认证
-     *
-     * @param userView 用户信息
-     */
-    @PostMapping("/login")
-    @ApiOperation(value = "登陆")
-    public BaseResponseUtil<SysUser> login(@RequestBody UserView userView, HttpServletRequest request) {
-
-        String userName = userView.getUsername();
-        String password = userView.getPassword();
-
-        return null;
-    }
 
 
     private <T> BaseResponseUtil<T> valid(Function<String, T> selectFunction, Predicate<T> predicate, String message, Object... arg) {

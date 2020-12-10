@@ -12,6 +12,9 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 
+import javax.annotation.Resource;
+import javax.sql.DataSource;
+
 /**
  * @author zuyunbo
  */
@@ -27,19 +30,14 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
     @Autowired
     RedisConnectionFactory redisConnectionFactory;
 
+    @Resource
+    private DataSource dataSource;
+
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
+        clients.jdbc(dataSource);
 
-        String finalSecret = new BCryptPasswordEncoder().encode("123456");
-        //配置两个客户端,一个用于password认证一个用于client认证
-        clients.inMemory()
-                .withClient("client_2")
-                .resourceIds(DEMO_RESOURCE_ID)
-                .authorizedGrantTypes("password", "refresh_token")
-                .scopes("select")
-                .authorities("oauth2")
-                .secret(finalSecret);
     }
 
     @Override
