@@ -1,4 +1,4 @@
-package com.cloud.userauth.model;
+package com.cloud.gatewayzuul.entity;
 
 
 import io.swagger.annotations.ApiModel;
