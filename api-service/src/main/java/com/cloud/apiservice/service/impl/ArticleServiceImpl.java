@@ -1,5 +1,6 @@
 package com.cloud.apiservice.service.impl;
 
+import com.example.commoncenter.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.cloud.apimodel.param.ArticleParam;
 import com.cloud.apimodel.entity.Article;
@@ -9,6 +10,9 @@ import com.example.commoncenter.exception.IllegalParameterException;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import java.util.List;
+
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 
@@ -30,6 +34,7 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public int save(Article entity) {
+        Authentication user = User.getUser();
         return articleMapper.insert(entity);
     }
 

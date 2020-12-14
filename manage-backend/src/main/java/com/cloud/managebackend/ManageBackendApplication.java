@@ -8,7 +8,7 @@ import tk.mybatis.spring.annotation.MapperScan;
 
 @SpringBootApplication
 @MapperScan(basePackages = {"com.cloud.apiservice.mapper"})
-@ComponentScan("com")
+@ComponentScan("com.cloud.apiservice")
 @EnableEurekaClient
 public class ManageBackendApplication {
 

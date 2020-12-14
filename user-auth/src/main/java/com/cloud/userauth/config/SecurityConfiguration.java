@@ -1,6 +1,7 @@
 package com.cloud.userauth.config;
 
 
+import com.example.commoncenter.constants.PermitAllUrl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -65,13 +66,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        // 放开权限的url
         http.authorizeRequests()
-                .antMatchers("/oauth/**","/login/**", "/logout","/user/**").permitAll()
-                .anyRequest().authenticated()   // 其他地址的访问均需验证权限
-                .and()
-                .formLogin()
-                .loginPage("/login")
-                .and()
-                .logout().logoutSuccessUrl("/");
+                .antMatchers(PermitAllUrl.permitAllUrl()).permitAll()
+                .anyRequest().authenticated().and()
+                .httpBasic().and().csrf().disable();
     }
 }
