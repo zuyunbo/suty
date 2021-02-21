@@ -20,7 +20,7 @@ import java.util.List;
 @Slf4j
 public abstract class AutoInterfaceImpl implements AutoInterface {
 
-    private static final String URL = "jdbc:mysql://47.96.101.188:3306/suty";
+    private static final String URL = "jdbc:mysql://47.105.35.98:3306/cloud_code";
     private static final String NAME = "root";
     private static final String PASS = "123456";
     private static final String DRIVER = "com.mysql.jdbc.Driver";
@@ -28,7 +28,7 @@ public abstract class AutoInterfaceImpl implements AutoInterface {
 
     private TableEntity tableEntity;
 
-    private static final String SQL = "select  column_name, column_comment, data_type from information_schema.columns where table_schema ='suty'  and table_name = '%s'";
+    private static final String SQL = "select  column_name, column_comment, data_type from information_schema.columns where table_schema ='cloud_code'  and table_name = '%s'";
 
     @Override
     public GenerateCode getGenerateCodes() {
@@ -46,6 +46,7 @@ public abstract class AutoInterfaceImpl implements AutoInterface {
         xmlCode.setNextGenerateCode(controllerCode);
         entityCode.setNextGenerateCode(daoCode);
         return entityCode;
+
     }
 
     /**

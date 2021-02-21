@@ -11,7 +11,7 @@ public interface AutoGenConfig {
     /**
      * 表名
      */
-    String tableName = "sys_user";
+    String tableName = "c_user";
     /**
      * 公共配置
      */
